@@ -20,6 +20,11 @@ prost = "0.14.4"
 tonic-prost = "0.14.7"
 serde_json = "1.0.154"
 reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
+tower-http = { version = "0.7.1", features = ["trace"] }
+prometheus = "0.14.0"
+subtle = "2.6.1"
 
 [build-dependencies]
 tonic-prost-build = "0.14.7"
