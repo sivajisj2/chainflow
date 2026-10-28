@@ -1,0 +1,5 @@
+CREATE TABLE processed_messages (
+    message_id TEXT PRIMARY KEY,
+    status TEXT NOT NULL DEFAULT 'COMPLETED',
+    processed_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

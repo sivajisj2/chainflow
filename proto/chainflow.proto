@@ -1,0 +1,16 @@
+syntax = "proto3";
+package chainflow;
+
+service TransactionService{
+    rpc GetTransactionStatus(TransactionRequest)
+        returns (TransactionResponse);
+}
+
+message  TransactionRequest{
+    string transaction_id = 1;
+}
+
+message TransactionResponse{
+    string transaction_id = 1;
+    string status = 2;
+}
