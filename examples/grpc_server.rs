@@ -40,7 +40,7 @@ impl TransactionService for MyTransactionService {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let address = "127.0.0.1:50051".parse()?;
 
-    let service = MyTransactionService::default();
+    let service = MyTransactionService;
 
     println!("ChainFlow gRPC server listening on {address}");
 

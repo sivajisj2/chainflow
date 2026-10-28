@@ -82,7 +82,7 @@ impl TransactionRepository {
         .bind(tx.amount)
         .bind(&tx.from)
         .bind(&tx.to)
-        .bind(&tx.status)
+        .bind(tx.status)
         .bind(&tx.idempotency_key)
         .fetch_optional(&self.pool)
         .await?;

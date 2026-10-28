@@ -116,10 +116,10 @@ impl TransactionService {
         new_status: &TransactionStatus,
     ) -> Result<Transaction, TransactionServiceError> {
         // Step 1 — domain rule, no DB touched yet.
-        if !current_status.can_transition_to(new_status.clone()) {
+        if !current_status.can_transition_to(*new_status) {
             return Err(TransactionServiceError::InvalidTransition {
-                current: current_status.clone(),
-                next: new_status.clone(),
+                current: *current_status,
+                next: *new_status,
             });
         }
 
@@ -145,7 +145,7 @@ impl TransactionService {
             None => Err(TransactionServiceError::TransactionNotFound),
             Some(found) => Err(TransactionServiceError::StateConflict {
                 current: found.status,
-                expected: current_status.clone(),
+                expected: *current_status,
             }),
         }
     }

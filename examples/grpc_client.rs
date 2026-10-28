@@ -22,12 +22,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Connected to ChainFlow gRPC server");
 
-    let request = Request::new(TransactionRequest {
-        transaction_id: "txn-500".to_string(),
-    });
-
-    let response = client.get_transaction_status(request).await;
-
     let max_attempts = 4;
 
     for attempt in 1..=max_attempts {

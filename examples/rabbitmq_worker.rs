@@ -73,7 +73,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         )
         .await?;
 
-    while let Some(delivery_result) = consumer.next().await {
+    if let Some(delivery_result) = consumer.next().await {
         let delivery = delivery_result?;
 
         let body = String::from_utf8_lossy(&delivery.data);
@@ -85,10 +85,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
         if processed {
             delivery.ack(BasicAckOptions::default()).await?;
             println!("Job processed and acknowledged");
-            break;
         } else {
             println!("Processing failed; leaving the message unacknowledged");
-            break;
         }
     }
 
